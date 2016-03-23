@@ -12,6 +12,9 @@ import java.io.PrintWriter;
 public class CalculatorServlet extends HttpServlet {
 
     private volatile PrintWriter writer;
+    private String operation;
+    private String operand1;
+    private String operand2;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -22,13 +25,12 @@ public class CalculatorServlet extends HttpServlet {
                 req.getParameterMap().containsKey("operand1")&&
                 req.getParameterMap().containsKey("operand2"))
         {
-            Double result = new HttpCalculator(
-                    req.getParameter("operation"),
-                    req.getParameter("operand1"),
-                    req.getParameter("operand2")
-            ).calculate();
+            operation = req.getParameter("operation");
+            operand1 = req.getParameter("operand1");
+            operand2 = req.getParameter("operand2");
 
-            if(result!=null) {
+            if(isOperation(operation)&&isNumber(operand1)&&isNumber(operand2)) {
+                Double result = new HttpCalculator(operation, operand1, operand2).calculate();
                 writer.print("The result is: " + result);
             }
             else {
@@ -43,5 +45,25 @@ public class CalculatorServlet extends HttpServlet {
 
         writer.flush();
 
+    }
+
+    private boolean isNumber(String str)
+    {
+        try
+        {
+            double d = Double.parseDouble(str);
+        }
+        catch(NumberFormatException nfe)
+        {
+            return false;
+        }
+        return true;
+    }
+
+    private boolean isOperation(String operator) {
+        if(operator.equals("add")||operator.equals("subtract")||operator.equals("multiply")||operator.equals("divide")) {
+            return true;
+        }
+        return false;
     }
 }

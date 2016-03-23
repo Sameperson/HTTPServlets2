@@ -13,41 +13,34 @@ public class HttpCalculator {
     }
 
     public Double calculate() {
+        double operandOne = Double.parseDouble(this.operandOne);
+        double operandTwo = Double.parseDouble(this.operandTwo);
 
-        try {
-            Double operandOne = Double.parseDouble(this.operandOne);
-            Double operandTwo = Double.parseDouble(this.operandTwo);
-
-            if (operation.equals("add")) {
+        if (operation.equals("add")) {
                 return add(operandOne, operandTwo);
-            } else if (operation.equals("multiply")) {
+        } else if (operation.equals("multiply")) {
                 return multiply(operandOne, operandTwo);
-            } else if (operation.equals("subtract")) {
+        } else if (operation.equals("subtract")) {
                 return subtract(operandOne, operandTwo);
-            } else if (operation.equals("divide")) {
+        } else if (operation.equals("divide")) {
                 return divide(operandOne, operandTwo);
-            }
         }
-        catch (NumberFormatException e) {
-            return Double.NaN;
-        }
-
-        return null;
+        return 0.0;
     }
 
-    private Double add(Double operandOne, Double operandTwo) {
+    private double add(double operandOne, double operandTwo) {
         return operandOne + operandTwo;
     }
 
-    private Double multiply(Double operandOne, Double operandTwo) {
+    private double multiply(double operandOne, double operandTwo) {
         return operandOne * operandTwo;
     }
 
-    private Double subtract(Double operandOne, Double operandTwo) {
+    private double subtract(double operandOne, double operandTwo) {
         return operandOne - operandTwo;
     }
 
-    private Double divide(Double operandOne, Double operandTwo) {
+    private double divide(double operandOne, double operandTwo) {
         return operandOne / operandTwo;
     }
 
