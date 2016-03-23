@@ -29,7 +29,7 @@ public class CalculatorServlet extends HttpServlet {
             operand1 = req.getParameter("operand1");
             operand2 = req.getParameter("operand2");
 
-            if(isOperation(operation)&&isNumber(operand1)&&isNumber(operand2)) {
+            if(isOperation(operation) && isNumber(operand1) && isNumber(operand2)) {
                 Double result = new HttpCalculator(operation, operand1, operand2).calculate();
                 writer.print("The result is: " + result);
             }
@@ -61,7 +61,7 @@ public class CalculatorServlet extends HttpServlet {
     }
 
     private boolean isOperation(String operator) {
-        if(operator.equals("add")||operator.equals("subtract")||operator.equals("multiply")||operator.equals("divide")) {
+        if(operator.equals("add") || operator.equals("subtract") || operator.equals("multiply") || operator.equals("divide")) {
             return true;
         }
         return false;
