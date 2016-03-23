@@ -11,7 +11,6 @@ import java.io.PrintWriter;
 @WebServlet("/calculate")
 public class CalculatorServlet extends HttpServlet {
 
-    ;
     private String operation;
     private String operand1;
     private String operand2;
