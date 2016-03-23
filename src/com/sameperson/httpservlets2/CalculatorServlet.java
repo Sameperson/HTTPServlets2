@@ -11,7 +11,7 @@ import java.io.PrintWriter;
 @WebServlet("/calculate")
 public class CalculatorServlet extends HttpServlet {
 
-    private volatile PrintWriter writer;
+    ;
     private String operation;
     private String operand1;
     private String operand2;
@@ -19,7 +19,7 @@ public class CalculatorServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        writer = resp.getWriter();
+        PrintWriter writer = resp.getWriter();
 
         if (req.getParameterMap().containsKey("operation") &&
                 req.getParameterMap().containsKey("operand1")&&
