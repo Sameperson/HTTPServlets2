@@ -22,11 +22,9 @@ public class HttpCalculator {
                 return multiply(operandOne, operandTwo);
         } else if (operation.equals("subtract")) {
                 return subtract(operandOne, operandTwo);
-        } else if (operation.equals("divide")) {
-                return divide(operandOne, operandTwo);
+        } else {return divide(operandOne, operandTwo);
         }
-        return 0.0;
-    }
+   }
 
     private double add(double operandOne, double operandTwo) {
         return operandOne + operandTwo;
